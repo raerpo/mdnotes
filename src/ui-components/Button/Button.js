@@ -17,7 +17,7 @@ const ButtonWrapper = styled.div`
 const Button = (props) => {
   return (
     <ButtonWrapper>
-      <button>
+      <button {...props}>
         {props.children}
       </button>
     </ButtonWrapper>

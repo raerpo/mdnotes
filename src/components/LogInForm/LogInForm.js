@@ -6,7 +6,7 @@ const LogInForm = () => {
   return (
     <Form>
       <h3>Please sign in</h3>
-      <Button>
+      <Button onClick={(e) => {e.preventDefault(); console.log('fuck yeah!');}}>
         Sign In
       </Button>
     </Form>

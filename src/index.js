@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import LogInPage from 'components/LogInPage';
 import { injectGlobal } from 'styled-components';
@@ -11,4 +11,18 @@ injectGlobal`
   }
 `;
 
-ReactDOM.render(<div><LogInPage /></div>, document.getElementById('root'));
+export class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { auth: null }
+  }
+  render() { 
+    return ( <div>
+      <LogInPage />
+    </div> );
+  }
+}
+ 
+export default App;
+
+ReactDOM.render(<App />, document.getElementById('root'));
