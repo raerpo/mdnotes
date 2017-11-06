@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import LogInHeader from './components/LogInHeader';
+import LogInPage from 'components/LogInPage';
 import { injectGlobal } from 'styled-components';
 
 injectGlobal`
@@ -11,4 +11,4 @@ injectGlobal`
   }
 `;
 
-ReactDOM.render(<div><LogInHeader /></div>, document.getElementById('root'));
+ReactDOM.render(<div><LogInPage /></div>, document.getElementById('root'));
