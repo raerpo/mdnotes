@@ -3,11 +3,11 @@ import PageWrap from 'ui-components/PageWrap';
 import LogInHeader from 'components/LogInHeader';
 import LogInForm from 'components/LogInForm';
 
-const LogInPage = () => {
+const LogInPage = (props) => {
   return (
     <PageWrap>
       <LogInHeader />
-      <LogInForm />
+      <LogInForm {...props}/>
     </PageWrap>
   );
 }

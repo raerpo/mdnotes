@@ -1,5 +1,5 @@
 export const colors = {
-  main: 'palevioletred',
+  main: '#badd54',
   textColor: 'white'
 };
 
