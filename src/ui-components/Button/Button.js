@@ -5,7 +5,7 @@ import { colors } from 'ui-components/constants';
 const ButtonWrapper = styled.div`
   & > button {
     background-color: ${colors.main};
-    color: ${colors.textColor};
+    color: ${colors.buttonTextColor};
     border: none;
     padding: 1rem;
     font-size: 1.2rem;

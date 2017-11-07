@@ -3,12 +3,15 @@ import ReactDOM from 'react-dom';
 import LogInPage from 'components/LogInPage';
 import { injectGlobal } from 'styled-components';
 import { auth, githubAuthProvider } from 'config/firebase';
+import { colors } from './ui-components/constants';
 
 injectGlobal`
   body {
     margin: 0px;
     font-size: 16px;
     font-family: arial;
+    background-color: ${colors.background};
+    color: ${colors.textColor}
   }
 `;
 
@@ -34,15 +37,12 @@ export class App extends Component {
   }
 
   render() {
-    const { displayName, email } = this.state.userData;
-
-    return ( <div>
-      <p>{`${displayName} - ${email}`}</p>
-      <LogInPage handleLogin={this.handleLogin}/>
-    </div> );
+    return (<div>
+      <LogInPage handleLogin={this.handleLogin} />
+    </div>);
   }
 }
- 
+
 export default App;
 
 ReactDOM.render(<App />, document.getElementById('root'));

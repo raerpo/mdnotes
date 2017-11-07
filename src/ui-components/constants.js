@@ -1,6 +1,9 @@
 export const colors = {
-  main: '#badd54',
-  textColor: 'white'
+  main: '#DB7093',
+  background: '#FFFFFF',
+  buttonTextColor: '#FFFFFF',
+  textColor: '#666666',
+  verde: '#DFEFCA'
 };
 
 export const sizes = {
