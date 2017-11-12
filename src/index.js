@@ -21,6 +21,10 @@ export class App extends Component {
     this.state = { userData: {} }
   }
 
+  componentDidMount() {
+    
+  }
+
   handleLogin = (e) => {
     e.preventDefault();
     auth.signInWithPopup(githubAuthProvider).then((res) => {

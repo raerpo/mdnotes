@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../../ui-components/Header';
+import Header from 'ui-components/Header';
 
 const LogInHeader = () => {
   return (
