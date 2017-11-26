@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import LogInPage from 'components/LogInPage';
 import { injectGlobal } from 'styled-components';
-import { auth, githubAuthProvider } from 'config/firebase';
 import { colors } from './ui-components/constants';
+import App from './App';
 
 injectGlobal`
   body {
@@ -14,39 +13,5 @@ injectGlobal`
     color: ${colors.textColor}
   }
 `;
-
-export class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { userData: {} }
-  }
-
-  componentDidMount() {
-    
-  }
-
-  handleLogin = (e) => {
-    e.preventDefault();
-    auth.signInWithPopup(githubAuthProvider).then((res) => {
-      // res contains user data 
-      const { displayName, email } = res.user;
-      const userData = {
-        displayName,
-        email
-      };
-      this.setState({
-        userData
-      })
-    });
-  }
-
-  render() {
-    return (<div>
-      <LogInPage handleLogin={this.handleLogin} />
-    </div>);
-  }
-}
-
-export default App;
 
 ReactDOM.render(<App />, document.getElementById('root'));
