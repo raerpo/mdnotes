@@ -1,19 +1,20 @@
 import React from 'react';
-import { auth, githubAuthProvider } from '../../config/firebase';
+import cx from 'classnames';
 
-const Home = () => {
-  const logInWIthGithub = () => {
-    auth.signInWithRedirect(githubAuthProvider);
-  }
-  return <div>
-    Home Page
-    <div className="ui animated button" tabindex="0" onClick={logInWIthGithub}>
-      <div className="visible content">Login with Github</div>
-      <div className="hidden content">
-        <i className="right github icon"></i>
+const Home = ({ onlogInWithGithub, isLogginIn }) => {
+  const buttonClassNames = cx('ui basic button massive', { loading: isLogginIn });
+  return (
+    <div className="ui container">
+      <div className="ui text container">
+        <h1 className="ui header">MDnotes</h1>
+        <h3>Take notes wherever you are. Even on your text editor.</h3>
+        <button className={buttonClassNames} onClick={onlogInWithGithub}>
+          <i className="icon github"></i>
+          Login with Github
+        </button>
       </div>
     </div>
-  </div>
+  );
 }
- 
+
 export default Home;

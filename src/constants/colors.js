@@ -1,2 +1,2 @@
-export const backgroundColor = 'papayawhip';
+export const backgroundColor = 'white';
 export const textColor = 'lightcoral';
