@@ -1,16 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { backgroundColor, textColor } from './constants/colors';
 import { injectGlobal } from 'styled-components';
-import { colors } from './ui-components/constants';
-import App from './App';
+import App from './components/App';
+
+import 'semantic-ui-css/semantic.min.css';
 
 injectGlobal`
   body {
     margin: 0px;
-    font-size: 16px;
+    font-size: 14px;
     font-family: arial;
-    background-color: ${colors.background};
-    color: ${colors.textColor}
+    background-color: ${backgroundColor};
+    color: ${textColor}
   }
 `;
 
