@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import Home from '../Home';
 import Main from '../Main';
+import LoadingScreen from '../LoadingScreen';
 import * as routes from '../../constants/routes';
 import { auth, githubAuthProvider } from '../../config/firebase';
 
@@ -15,9 +16,13 @@ export class App extends Component {
     this.onLogInWithGithub = this.onLogInWithGithub.bind(this);
   }
   componentDidMount() {
+    this.setState({
+      loadingDataFromServer: true
+    });
     auth.onAuthStateChanged(user => {
       this.setState({
-        user
+        user,
+        loadingDataFromServer: false
       });
     });
   }
@@ -35,8 +40,11 @@ export class App extends Component {
     });
   }
   render() {
-    const { isLogginIn, user } = this.state;
+    const { isLogginIn, user, loadingDataFromServer } = this.state;
     const isLogIn = user !== null;
+    if (loadingDataFromServer) {
+      return <LoadingScreen />
+    }
     return (<Router>
       <div className="app">
         <Route exact path={routes.HOME} render={() => isLogIn ? <Redirect to={routes.MAIN} /> : <Home isLogginIn={isLogginIn} onlogInWithGithub={this.onLogInWithGithub} />} />

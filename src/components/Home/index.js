@@ -7,7 +7,7 @@ const Home = ({ onlogInWithGithub, isLogginIn }) => {
     <div className="ui container">
       <div className="ui text container">
         <h1 className="ui header">MDnotes</h1>
-        <h3>Take notes wherever you are. Even on your text editor.</h3>
+        <h3>Take notes wherever you are, even on your text editor, and keep them on sync all the time.</h3>
         <button className={buttonClassNames} onClick={onlogInWithGithub}>
           <i className="icon github"></i>
           Login with Github

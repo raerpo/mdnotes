@@ -5,6 +5,7 @@ import { injectGlobal } from 'styled-components';
 import App from './components/App';
 
 import 'semantic-ui-css/semantic.min.css';
+import './custom.css';
 
 injectGlobal`
   body {
