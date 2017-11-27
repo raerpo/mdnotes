@@ -13,7 +13,6 @@ export class App extends Component {
       user: null,
       isLogginIn: false
     }
-    this.onLogInWithGithub = this.onLogInWithGithub.bind(this);
   }
   componentDidMount() {
     this.setState({
@@ -26,7 +25,7 @@ export class App extends Component {
       });
     });
   }
-  onLogInWithGithub() {
+  onLogInWithGithub = () => {
     this.setState({
       isLogginIn: true
     }, () => {
@@ -39,6 +38,9 @@ export class App extends Component {
         });
     });
   }
+  onLogOutClick = () => {
+    auth.signOut();
+  }
   render() {
     const { isLogginIn, user, loadingDataFromServer } = this.state;
     const isLogIn = user !== null;
@@ -48,7 +50,7 @@ export class App extends Component {
     return (<Router>
       <div className="app">
         <Route exact path={routes.HOME} render={() => isLogIn ? <Redirect to={routes.MAIN} /> : <Home isLogginIn={isLogginIn} onlogInWithGithub={this.onLogInWithGithub} />} />
-        <Route path={routes.MAIN} render={() => isLogIn ? <Main user={user} /> : <Redirect to={routes.HOME} />} />
+        <Route path={routes.MAIN} render={() => isLogIn ? <Main user={user} onLogOutClick={this.onLogOutClick} /> : <Redirect to={routes.HOME} />} />
       </div>
     </Router>)
   }
