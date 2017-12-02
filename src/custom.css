@@ -1,3 +1,6 @@
 .fullscreen {
   height: 100vh;
 }
+.ui.list, .ui.menu {
+  margin: 0px;
+}
