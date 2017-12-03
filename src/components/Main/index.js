@@ -1,7 +1,7 @@
 import React from 'react';
 import TopMenu from '../TopMenu';
-import Search from '../Search';
 import NoteList from '../NoteList';
+import NoteActions from '../NoteActions';
 import CodeEditor from '../CodeEditor';
 
 const Main = ({ user, onLogOutClick }) => {
@@ -12,7 +12,7 @@ const Main = ({ user, onLogOutClick }) => {
     <TopMenu user={user} onLogOutClick={onLogOutClick} />
     <div className="ui grid main">
       <div className="ui column four wide sidemenu">
-        <Search />
+        <NoteActions />
         <NoteList />
       </div>
       <div className="ui column twelve wide">
