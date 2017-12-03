@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NoteActions = () => {
+const Search = () => {
   return (
     <div className="search">
       <div className="ui icon input fluid">
@@ -11,6 +11,6 @@ const NoteActions = () => {
   );
 }
 
-export default NoteActions;
+export default Search;
 
 
