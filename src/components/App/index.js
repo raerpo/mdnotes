@@ -30,7 +30,7 @@ export class App extends Component {
       isLogginIn: true
     }, () => {
       auth
-        .signInWithRedirect(githubAuthProvider)
+        .signInWithPopup(githubAuthProvider)
         .then(() => {
           this.setState({
             isLogginIn: false
