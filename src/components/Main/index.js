@@ -7,8 +7,8 @@ const Main = ({ user, onLogOutClick }) => {
   // soon as CRA supports it
   return <div>
     <TopMenu user={user} onLogOutClick={onLogOutClick} />
-    <div className="ui grid">
-      <div className="ui column four wide">
+    <div className="ui grid main">
+      <div className="ui column four wide sidemenu">
         <NoteList />
       </div>
       <div className="ui column twelve wide">

@@ -4,3 +4,12 @@
 .ui.list, .ui.menu {
   margin: 0px;
 }
+.ui.grid.main {
+  margin-top: 0px;
+}
+.sidemenu {
+
+}
+.ui.grid > .column:not(.row) {
+  padding-top: 0px;
+}
