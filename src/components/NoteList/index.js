@@ -1,7 +1,8 @@
 import React from 'react';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
+import cx from 'classnames';
 
-const NoteList = ({ noteListData }) => {
+const NoteList = ({ noteListData, setActiveNote, activeNote }) => {
 
   const renderEmpty = () => {
     return (
@@ -17,12 +18,17 @@ const NoteList = ({ noteListData }) => {
     return keys.map(key => {
       const { title, lastModified } = noteListData[key];
       const lastModifiedFormated = distanceInWordsToNow(new Date(lastModified));
-      return (<div className="item" key={key}>
-        <div className="content">
-          <a className="header">{title}</a>
-          <small className="description">Last modification: {lastModifiedFormated}</small>
+      const handleSelectNote = () => { setActiveNote(key)}
+      const noteClasses = cx('item', {'active': key === activeNote });
+      return (
+        <div className={noteClasses} key={key}>
+          <button className="ui mini red right floated button delete-note">Delete</button>
+          <div className="content" onClick={handleSelectNote}>
+            <a className="header">{title}</a>
+            <small className="description">Last modification: {lastModifiedFormated}</small>
+          </div>
         </div>
-      </div>)
+      )
     });
   }
 

@@ -21,6 +21,17 @@
 }
 .sidemenu .ui.celled.list > .item {
   padding: 1em .5em;
+  cursor: pointer;
+}
+.sidemenu .ui.celled.list > .item.active {
+  background-color: #eaeff5;
+}
+.sidemenu .ui.celled.list > .item:hover button.delete-note {
+  opacity: 1;
+}
+button.delete-note {
+  opacity: 0;
+  transition: all .3s ease-in-out;
 }
 .ui.grid > .column:not(.row) {
   padding-top: 0px;

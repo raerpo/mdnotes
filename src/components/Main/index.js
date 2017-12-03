@@ -4,7 +4,7 @@ import NoteList from '../NoteList';
 import NoteActions from '../NoteActions';
 import CodeEditor from '../CodeEditor';
 
-const Main = ({ user, onLogOutClick, addNewNote, noteListData }) => {
+const Main = ({ user, onLogOutClick, addNewNote, noteListData, setActiveNote, activeNote }) => {
   // TODO: Replace that wrapping div with a Fragment as 
   // soon as CRA supports it
 
@@ -13,7 +13,7 @@ const Main = ({ user, onLogOutClick, addNewNote, noteListData }) => {
     <div className="ui grid main">
       <div className="ui column four wide sidemenu">
         <NoteActions addNewNote={addNewNote} />
-        <NoteList noteListData={noteListData} />
+        <NoteList noteListData={noteListData} setActiveNote={setActiveNote} activeNote={activeNote} />
       </div>
       <div className="ui column twelve wide">
         <CodeEditor />
