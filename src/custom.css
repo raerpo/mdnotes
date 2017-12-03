@@ -1,5 +1,9 @@
-.fullscreen {
+.fullscreen, #root, .app {
   height: 100vh;
+}
+.app > div {
+  height: 100vh;
+  overflow: hidden;
 }
 .ui.list, .ui.menu {
   margin: 0px;
@@ -12,4 +16,7 @@
 }
 .ui.grid > .column:not(.row) {
   padding-top: 0px;
+}
+.CodeMirror {
+  height: 94vh;
 }
