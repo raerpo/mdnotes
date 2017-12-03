@@ -2,7 +2,7 @@ import React from 'react';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import cx from 'classnames';
 
-const NoteList = ({ noteListData, setActiveNote, activeNote }) => {
+const NoteList = ({ noteListData, setActiveNote, activeNote, deleteNote }) => {
 
   const renderEmpty = () => {
     return (
@@ -18,11 +18,12 @@ const NoteList = ({ noteListData, setActiveNote, activeNote }) => {
     return keys.map(key => {
       const { title, lastModified } = noteListData[key];
       const lastModifiedFormated = distanceInWordsToNow(new Date(lastModified));
-      const handleSelectNote = () => { setActiveNote(key)}
+      const handleSelectNote = () => { setActiveNote(key) };
+      const handleDeleteNote = () => { deleteNote(key) };
       const noteClasses = cx('item', {'active': key === activeNote });
       return (
         <div className={noteClasses} key={key}>
-          <button className="ui mini red right floated button delete-note">Delete</button>
+          <button className="ui mini red right floated button delete-note" onClick={handleDeleteNote}>Delete</button>
           <div className="content" onClick={handleSelectNote}>
             <a className="header">{title}</a>
             <small className="description">Last modification: {lastModifiedFormated}</small>

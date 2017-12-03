@@ -33,7 +33,7 @@ export class App extends Component {
             user,
             noteListData: snapshot.val(),
             // Set the first note as active by default
-            activeNote: Object.keys(snapshot.val())[0] || null,
+            activeNote: (snapshot.val() && Object.keys(snapshot.val())[0]) || null,
             loadingDataFromServer: false
           });
         });
@@ -62,7 +62,6 @@ export class App extends Component {
   }
 
   addNewNote = () => {
-    console.log('adding new note');
     const userId = this.state.user.uid;
     const noteId = uuid.v4();
     const defaultNote = '# This is the title of your new note';
@@ -72,6 +71,11 @@ export class App extends Component {
       note: defaultNote,
       lastModified: new Date().getTime()
     });
+  }
+
+  deleteNote = (noteId) => {
+    const userId = this.state.user.uid;
+    database.ref(`/user/${userId}/${noteId}`).remove();
   }
 
   setActiveNote = (activeNote) => {
@@ -89,7 +93,18 @@ export class App extends Component {
     return (<Router>
       <div className="app">
         <Route exact path={routes.HOME} render={() => isLogIn ? <Redirect to={routes.MAIN} /> : <Home isLogginIn={isLogginIn} onlogInWithGithub={this.onLogInWithGithub} />} />
-        <Route path={routes.MAIN} render={() => isLogIn ? <Main user={user} noteListData={noteListData} addNewNote={this.addNewNote} setActiveNote={this.setActiveNote} onLogOutClick={this.onLogOutClick} activeNote={activeNote} /> : <Redirect to={routes.HOME} />} />
+        <Route 
+          path={routes.MAIN} 
+          render={() => isLogIn ? 
+            <Main
+              user={user}
+              noteListData={noteListData}
+              addNewNote={this.addNewNote}
+              deleteNote={this.deleteNote}
+              setActiveNote={this.setActiveNote}
+              onLogOutClick={this.onLogOutClick}
+              activeNote={activeNote}
+            /> : <Redirect to={routes.HOME} />} />
       </div>
     </Router>)
   }
