@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Search = () => {
+const Search = ({ addNewNote }) => {
   return (
     <div className="actions">
       <div className="search">
@@ -10,9 +10,9 @@ const Search = () => {
         </div>
       </div>
       <div className="note-actions">
-        <div class="ui small basic icon buttons">
-          <button class="ui button" title="Download Notes"><i class="download icon"></i></button>
-          <button class="ui button" title="New note"><i class="plus icon"></i></button>
+        <div className="ui small basic icon buttons">
+          <button className="ui button" title="Download Notes"><i className="download icon"></i></button>
+          <button className="ui button" title="New note" onClick={addNewNote}><i className="plus icon"></i></button>
         </div>
       </div>
     </div>

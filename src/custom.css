@@ -19,12 +19,13 @@
   width: 100%;
   margin-right: 1em;
 }
-.sidemenu {
-
+.sidemenu .ui.celled.list > .item {
+  padding: 1em .5em;
 }
 .ui.grid > .column:not(.row) {
   padding-top: 0px;
 }
 .CodeMirror {
   height: 94vh;
+  width: 100%;
 }

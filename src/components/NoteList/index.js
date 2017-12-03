@@ -1,38 +1,31 @@
 import React from 'react';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 
-const NoteList = () => {
-  const noteListData = [
-    {
-      id: '1',
-      title: 'Hello world',
-      content: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis fugit, impedit maiores quos, excepturi necessitatibus facere officiis quas fugiat labore eveniet, iusto laborum! Veniam quibusdam nihil incidunt, illo voluptatem deserunt?',
-      lastModified: new Date().toString()
-    },
-    {
-      id: '2',
-      title: 'Hello world 2',
-      content: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis fugit, impedit maiores quos, excepturi necessitatibus facere officiis quas fugiat labore eveniet, iusto laborum! Veniam quibusdam nihil incidunt, illo voluptatem deserunt?',
-      lastModified: new Date().toString()
-    },
-    {
-      id: '3',
-      title: 'Hello world',
-      content: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veritatis fugit, impedit maiores quos, excepturi necessitatibus facere officiis quas fugiat labore eveniet, iusto laborum! Veniam quibusdam nihil incidunt, illo voluptatem deserunt?',
-      lastModified: new Date().toString()
-    }
-  ];
-  const renderNodeList = (noteListData) => {
-    return noteListData.map(note => (
-      <div className="item" key={note.id}>
-        <div className="content">
-          <a className="header">{note.title}</a>
-          This is an note example
-          <small className="description">Last modification: {distanceInWordsToNow(note.lastModified)}</small>
-        </div>
+const NoteList = ({ noteListData }) => {
+
+  const renderEmpty = () => {
+    return (
+      <div className="item">
+        <p>Nothing to show here. Click on the add button to add a new note</p>
       </div>
-    ));
+    );
   }
+
+  const renderNodeList = (noteListData) => {
+    if (!noteListData) return renderEmpty();
+    const keys = Object.keys(noteListData);
+    return keys.map(key => {
+      const { title, lastModified } = noteListData[key];
+      const lastModifiedFormated = distanceInWordsToNow(new Date(lastModified));
+      return (<div className="item" key={key}>
+        <div className="content">
+          <a className="header">{title}</a>
+          <small className="description">Last modification: {lastModifiedFormated}</small>
+        </div>
+      </div>)
+    });
+  }
+
   return (
     <div className="ui celled big list">
       {renderNodeList(noteListData)}

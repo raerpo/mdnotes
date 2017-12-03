@@ -9,12 +9,11 @@ const CodeEditor = () => {
     lineNumbers: true,
     mode: 'markdown'
   };
-  const defaultText = '# This is the title of your new note';
   const handleChange = (content) => {
     
   };
   return <CodeMirror 
-    value={defaultText} 
+    value={''} 
     options={options} 
     onChange={handleChange} 
   />
