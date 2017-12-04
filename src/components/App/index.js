@@ -68,7 +68,7 @@ export class App extends Component {
     const titleDefaultLength = 20;
     database.ref(`/user/${userId}/${noteId}`).set({
       title: defaultNote.slice(0, titleDefaultLength),
-      note: defaultNote,
+      content: defaultNote,
       lastModified: new Date().getTime()
     });
   }
@@ -82,6 +82,12 @@ export class App extends Component {
     this.setState({
       activeNote
     });
+  }
+
+  changeNote = (content, noteId) => {
+    const userId = this.state.user.uid;
+    console.log(content);
+    database.ref(`/user/${userId}/${noteId}`).update({'/content': content});
   }
 
   render() {
@@ -101,6 +107,7 @@ export class App extends Component {
               noteListData={noteListData}
               addNewNote={this.addNewNote}
               deleteNote={this.deleteNote}
+              changeNote={this.changeNote}
               setActiveNote={this.setActiveNote}
               onLogOutClick={this.onLogOutClick}
               activeNote={activeNote}

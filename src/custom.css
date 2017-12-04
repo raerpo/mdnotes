@@ -1,6 +1,9 @@
 .fullscreen, #root, .app {
   height: 100vh;
 }
+.logo > img {
+  width: 160px;
+}
 .app > div {
   height: 100vh;
   overflow: hidden;

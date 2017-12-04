@@ -2,8 +2,8 @@ import React from 'react';
 
 const TopMenu = ({ user, onLogOutClick }) => {
   return <div className="ui menu">
-    <div className="item">
-      <img src="/mdnotes.png" alt="MDNotes" />
+    <div className="item logo">
+      <img src="/mdnotes.png" alt="MDNotes" className="ui" />
     </div>
     <div className="menu right">
       <div className="item">
