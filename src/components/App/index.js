@@ -86,7 +86,6 @@ export class App extends Component {
 
   changeNote = (content, noteId) => {
     const userId = this.state.user.uid;
-    console.log(content);
     database.ref(`/user/${userId}/${noteId}`).update({'/content': content});
   }
 
