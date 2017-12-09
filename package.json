@@ -2,6 +2,10 @@
   "name": "mdnotes2",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Rafael Poveda",
+    "email": "raerpo@gmail.com"
+  },
   "dependencies": {
     "classnames": "^2.2.5",
     "codemirror": "^5.32.0",
