@@ -14,7 +14,8 @@ export class App extends Component {
     this.state = {
       user: null,
       activeNote: null,
-      isLogginIn: false
+      isLogginIn: false,
+      noteListData: {}
     }
   }
   componentDidMount() {
@@ -70,13 +71,18 @@ export class App extends Component {
       content: '',
       lastModified: new Date().getTime()
     });
+    this.setState({
+      activeNote: noteId
+    });
   }
 
   deleteNote = (noteId) => {
     const userId = this.state.user.uid;
     database.ref(`/user/${userId}/${noteId}`).remove();
+    const noteListDataKeys = Object.keys(this.state.noteListData);
+    // When a note is erased the new active note is the first one
     this.setState({
-      activeNote: null
+      activeNote: noteListDataKeys.length > 0 ? noteListDataKeys[0] : null
     });
   }
 
