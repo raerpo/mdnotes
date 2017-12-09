@@ -1,12 +1,13 @@
 import firebase from 'firebase';
+import { firebase } from '../keys';
 
 const config = {
-  apiKey: "AIzaSyBrebq_dRl6zt6QMJAKSVmFR6qW1NfJILs",
-  authDomain: "mdnotes-b0ddf.firebaseapp.com",
-  databaseURL: "https://mdnotes-b0ddf.firebaseio.com",
-  projectId: "mdnotes-b0ddf",
-  storageBucket: "",
-  messagingSenderId: "110985675594"
+  apiKey: firebase.apiKey,
+  authDomain: firebase.authDomain,
+  databaseURL: firebase.databaseURL,
+  projectId: firebase.projectId,
+  storageBucket: firebase.storageBucket,
+  messagingSenderId: firebase.messagingSenderId
 };
 
 firebase.initializeApp(config);
