@@ -32,8 +32,8 @@ export class App extends Component {
           this.setState({
             user,
             noteListData: snapshot.val(),
-            // Set the first note as active by default
-            activeNote: (snapshot.val() && Object.keys(snapshot.val())[0]) || null,
+            // Set the first note as active by default when there isn't any note
+            activeNote: this.state.activeNote || (snapshot.val() && Object.keys(snapshot.val())[0]),
             loadingDataFromServer: false
           });
         });
