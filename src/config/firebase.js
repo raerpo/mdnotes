@@ -1,13 +1,13 @@
 import firebase from 'firebase';
-import { firebase } from '../keys';
+import { firebase as firebaseKeys } from '../keys';
 
 const config = {
-  apiKey: firebase.apiKey,
-  authDomain: firebase.authDomain,
-  databaseURL: firebase.databaseURL,
-  projectId: firebase.projectId,
-  storageBucket: firebase.storageBucket,
-  messagingSenderId: firebase.messagingSenderId
+  apiKey: firebaseKeys.apiKey,
+  authDomain: firebaseKeys.authDomain,
+  databaseURL: firebaseKeys.databaseURL,
+  projectId: firebaseKeys.projectId,
+  storageBucket: firebaseKeys.storageBucket,
+  messagingSenderId: firebaseKeys.messagingSenderId
 };
 
 firebase.initializeApp(config);
