@@ -6,6 +6,7 @@ import Main from '../Main';
 import LoadingScreen from '../LoadingScreen';
 import * as routes from '../../constants/routes';
 import { auth, database, githubAuthProvider } from '../../config/firebase';
+import { setNoteTitle } from '../../utils/notes';
 
 export class App extends Component {
   constructor(props) {
@@ -64,11 +65,9 @@ export class App extends Component {
   addNewNote = () => {
     const userId = this.state.user.uid;
     const noteId = uuid.v4();
-    const defaultNote = '# This is the title of your new note';
-    const titleDefaultLength = 20;
     database.ref(`/user/${userId}/${noteId}`).set({
-      title: defaultNote.slice(0, titleDefaultLength),
-      content: defaultNote,
+      title: setNoteTitle(),
+      content: '',
       lastModified: new Date().getTime()
     });
   }
@@ -86,7 +85,12 @@ export class App extends Component {
 
   changeNote = (content, noteId) => {
     const userId = this.state.user.uid;
-    database.ref(`/user/${userId}/${noteId}`).update({'/content': content});
+    database.ref(`/user/${userId}/${noteId}`).update(
+      {
+        '/content': content,
+        '/title': setNoteTitle(content)
+      }
+    );
   }
 
   render() {
