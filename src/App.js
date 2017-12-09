@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import uuid from 'uuid';
-import Home from '../Home';
-import Main from '../Main';
-import LoadingScreen from '../LoadingScreen';
-import * as routes from '../../constants/routes';
-import { auth, database, githubAuthProvider } from '../../config/firebase';
-import { setNoteTitle } from '../../utils/notes';
+import Home from './components/Home';
+import Main from './components/Main';
+import LoadingScreen from './components/LoadingScreen';
+import * as routes from './constants/routes';
+import { auth, database, githubAuthProvider } from './config/firebase';
+import { setNoteTitle } from './utils/notes';
 
 export class App extends Component {
   constructor(props) {

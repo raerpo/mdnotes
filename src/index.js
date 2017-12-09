@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { backgroundColor, textColor } from './constants/colors';
 import { injectGlobal } from 'styled-components';
-import App from './components/App';
+import App from './App';
 
 import 'semantic-ui-css/semantic.min.css';
 import './custom.css';
