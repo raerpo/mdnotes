@@ -75,6 +75,9 @@ export class App extends Component {
   deleteNote = (noteId) => {
     const userId = this.state.user.uid;
     database.ref(`/user/${userId}/${noteId}`).remove();
+    this.setState({
+      activeNote: null
+    });
   }
 
   setActiveNote = (activeNote) => {
