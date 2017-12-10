@@ -6,7 +6,7 @@ import Main from './components/Main';
 import LoadingScreen from './components/LoadingScreen';
 import * as routes from './constants/routes';
 import { auth, database, githubAuthProvider } from './config/firebase';
-import { setNoteTitle } from './utils/notes';
+import { getNoteTitle } from './utils/notes';
 
 export class App extends Component {
   constructor(props) {
@@ -31,13 +31,7 @@ export class App extends Component {
         });
       } else {
         database.ref(`/user/${user.uid}`).on('value', (snapshot) => {
-          this.setState({
-            user,
-            noteListData: snapshot.val(),
-            // Set the first note as active by default when there isn't any note
-            activeNote: this.state.activeNote || (snapshot.val() && Object.keys(snapshot.val())[0]),
-            loadingDataFromServer: false
-          });
+          this.handleDataChange(snapshot, user);
         });
       }
     });
@@ -63,33 +57,56 @@ export class App extends Component {
     });
   }
 
+  getActiveNote = (data = {}, currentActiveNote = null) => {
+    const notesKeys = Object.keys(data);
+    if (notesKeys.length === 0 ) return null;
+    // By default, the active note should be the first one
+    if (!currentActiveNote) return notesKeys[0];
+    return currentActiveNote;
+  }
+
+  // This method will run everytime the data in firebase is change
+  handleDataChange = (snapshot, user) => {
+    const activeNote = this.getActiveNote(snapshot.val(), this.state.activeNote);
+    this.setState({
+      user,
+      activeNote,
+      noteListData: snapshot.val(),
+      loadingDataFromServer: false
+    });
+  }
+
   addNewNote = () => {
     const userId = this.state.user.uid;
     const noteId = uuid.v4();
     database.ref(`/user/${userId}/${noteId}`).set({
-      title: setNoteTitle(),
+      title: getNoteTitle(),
       content: '',
       lastModified: new Date().getTime()
-    });
-    this.setState({
-      activeNote: noteId
-    });
+    }).then(() => {
+      this.setActiveNote(noteId);
+    });    
   }
 
   deleteNote = (noteId) => {
     const userId = this.state.user.uid;
-    database.ref(`/user/${userId}/${noteId}`).remove();
-    const noteListDataKeys = Object.keys(this.state.noteListData);
-    // When a note is erased the new active note is the first one
-    this.setState({
-      activeNote: noteListDataKeys.length > 0 ? noteListDataKeys[0] : null
+    database.ref(`/user/${userId}/${noteId}`).remove().then(() => {
+      this.setActiveNote();
     });
   }
 
-  setActiveNote = (activeNote) => {
-    this.setState({
-      activeNote
-    });
+  setActiveNote = (activeNote = null) => {
+    if (!activeNote) {
+      const notesKeys = this.state.noteListData;
+      console.log(notesKeys);
+      this.setState({
+        activeNote: notesKeys.length > 0 ? notesKeys[0] : null
+      });
+    } else {
+      this.setState({
+        activeNote
+      });
+    }
   }
 
   changeNote = (content, noteId) => {
@@ -97,7 +114,7 @@ export class App extends Component {
     database.ref(`/user/${userId}/${noteId}`).update(
       {
         '/content': content,
-        '/title': setNoteTitle(content)
+        '/title': getNoteTitle(content)
       }
     );
   }
