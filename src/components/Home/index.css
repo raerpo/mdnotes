@@ -1,20 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans');
+
 .main-wrapper {
     position: relative;
     display: flex;
     justify-content: center;
+    font-family: 'Work Sans', sans-serif !important;
 }
 
 .main-wrapper_background {
     width: 100%;
-    height: 70%;
+    height: 100%;
     overflow: hidden;
-    transform: skewY(-6deg);
-    transform-origin: 0;
-    background: linear-gradient(to bottom, rgba(242,101,50,1) 0%, rgba(242,101,50,1) 0%, rgba(252,139,83,1) 51%, rgba(253,212,90,1) 100%);
+    transform: skewY(3deg);
+    transform-origin: 2;
+    background: #F7971E;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #FFD200, #F7971E);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #FFD200, #F7971E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    position: relative;
+    top: -5rem;    
 }
 
 .main-wrapper_content {
-    color: #393c71;
+    color: #fff;
     margin: 2rem 0;
     position: absolute;
     top: 0;
@@ -44,7 +51,7 @@
 }
 
 .main-wrapper_menu_content a {
-    color: #393c71;
+    color: #fff;
     font-size: 1rem;
     margin: 0 1rem;
     transition: all .1s ease-in-out;
@@ -55,7 +62,7 @@
 }
 
 .main-wrapper_info {
-    min-height: 90vh;
+    min-height: 80vh;
     width: 50%;
     display: flex;
     flex-flow: column;
@@ -63,27 +70,31 @@
 }
 
 .main-wrapper_info h2 {
-    font-size: 2.188rem;
+    font-size: 2.85rem;
 }
 
 .main-wrapper_info h3 {
-    font-size: 1.125rem;
+    font-size: 1.25rem;
+    font-weight: 100;
+    line-height: 2rem;
 }
 
 .ui.basic.button.main-wrapper_content_github {
-    background: #393c71 !important;
-    color: #ffffff !important;
+    color: #f49c3f!important;
+    background: #fff !important;
+    border: none;
     font-size: 1.125rem;
     padding: 1.5rem 2rem;
-    margin-top: 8rem;
+    margin-top: 4rem;
     width: 40%;
 }
 
 .ui.basic.button.main-wrapper_content_github:hover,
 .ui.basic.button.main-wrapper_content_github:active,
 .ui.basic.button.main-wrapper_content_github:focus {
-    background: #393c71 !important;
-    color: #ffffff !important;
+    color: #f49c3f !important;
+    box-shadow: none;
+    background: #fff;
 }
 
 .main-wrapper_img {

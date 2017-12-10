@@ -15,7 +15,7 @@ const Home = ({ onlogInWithGithub, isLogginIn }) => {
 
         <div className="ui main-wrapper_menu">
 
-          <img src="/MDnotes_logox1.png" alt="" />
+          <img src="/MDnotes_logo-white.png" alt="" />
           <div className="ui main-wrapper_menu_content">
             <a href="/">Authors</a>
             <a href="/">Explore</a>
@@ -26,7 +26,7 @@ const Home = ({ onlogInWithGithub, isLogginIn }) => {
 
         <div className="ui main-wrapper_info">
 
-          <h2>Hero Header</h2>
+          <h2>TAKE YOUR NOTES EVERYWHERE</h2>
           <h3>Take notes wherever you are, even on your text editor, and keep them on sync all the time.</h3>
           <button className={buttonClassNames} onClick={onlogInWithGithub}>
             <i className="icon github"></i>
