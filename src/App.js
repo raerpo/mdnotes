@@ -57,13 +57,12 @@ export class App extends Component {
     });
   }
 
-  getActiveNote = (data, currentActiveNote = null) => {
-    if (!data) return null;
-    const notesKeys = Object.keys(data);
+  getActiveNote = (dataNotes, currentActiveNote) => {
+    if (!dataNotes) return null;
+    const notesKeys = Object.keys(dataNotes);
     if (notesKeys.length === 0 ) return null;
-    // By default, the active note should be the first one
-    if (!currentActiveNote) return notesKeys[0];
-    return currentActiveNote;
+    const activeNoteInNotesKeys = notesKeys.indexOf(currentActiveNote) > -1;
+    return activeNoteInNotesKeys ? currentActiveNote : notesKeys[0];
   }
 
   // This method will run everytime the data in firebase is change
@@ -84,22 +83,17 @@ export class App extends Component {
       title: getNoteTitle(),
       content: '',
       lastModified: new Date().getTime()
-    }).then(() => {
-      this.setActiveNote(noteId);
     });    
   }
 
   deleteNote = (noteId) => {
     const userId = this.state.user.uid;
-    database.ref(`/user/${userId}/${noteId}`).remove().then(() => {
-      this.setActiveNote();
-    });
+    database.ref(`/user/${userId}/${noteId}`).remove();
   }
 
-  setActiveNote = (activeNote = null) => {
+  setActiveNote = (activeNote) => {
     if (!activeNote) {
       const notesKeys = this.state.noteListData;
-      console.log(notesKeys);
       this.setState({
         activeNote: notesKeys.length > 0 ? notesKeys[0] : null
       });
