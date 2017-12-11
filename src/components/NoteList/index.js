@@ -15,7 +15,7 @@ const NoteList = ({ noteListData, setActiveNote, activeNote, deleteNote }) => {
 
   const renderNodeList = (noteListData) => {
     const noteArray = firebaseObjectToArray(noteListData);
-    if (!noteArray) return renderEmpty();
+    if (noteArray.length === 0) return renderEmpty();
     return noteArray.map(note => {
       const { title, lastModified, id } = note;
       const lastModifiedFormated = distanceInWordsToNow(new Date(lastModified));

@@ -18,7 +18,8 @@ export const getNoteTitle = (content = '', titleLimit = 20, defaultTitle = 'Unna
  *  [{id: noteId, timestamp: Number, content: String}, {id: noteId, timestamp: Number, content: String}, {id: noteId, timestamp: Number, content: String}]
  * @param  {} noteListData
  */
-export const firebaseObjectToArray = (noteListData = {}) => {
+export const firebaseObjectToArray = (noteListData) => {
+  if (!noteListData) return [];
   const keys = Object.keys(noteListData);
   if (keys.length === 0) return [];
   return keys.map(key => {

@@ -57,7 +57,8 @@ export class App extends Component {
     });
   }
 
-  getActiveNote = (data = {}, currentActiveNote = null) => {
+  getActiveNote = (data, currentActiveNote = null) => {
+    if (!data) return null;
     const notesKeys = Object.keys(data);
     if (notesKeys.length === 0 ) return null;
     // By default, the active note should be the first one
