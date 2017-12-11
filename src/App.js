@@ -18,8 +18,6 @@ export class App extends Component {
       noteListData: {},
       paramToSearch: ''
     }
-
-    this.filterNotes = this.filterNotes.bind(this);
   }
   componentDidMount() {
     // Show the loading screen
@@ -90,7 +88,7 @@ export class App extends Component {
   }
 
   filterNotes = (e) => {
-    let param = e.target.value;
+    const param = e.target.value;
     this.setState({ paramToSearch: param});
   }
 
