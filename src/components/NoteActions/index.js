@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Search = ({ addNewNote }) => {
+const Search = ({ addNewNote, filterNotes }) => {
   return (
     <div className="actions">
       <div className="search">
         <div className="ui icon input fluid">
           <i className="search icon"></i>
-          <input placeholder="Search..." type="text" />
+          <input placeholder="Search..." type="text" onKeyUp={filterNotes}/>
         </div>
       </div>
       <div className="note-actions">
