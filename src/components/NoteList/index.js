@@ -3,7 +3,7 @@ import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import cx from 'classnames';
 import { firebaseObjectToArray } from '../../utils/notes';
 
-const NoteList = ({ noteListData, setActiveNote, activeNote, deleteNote }) => {
+const NoteList = ({ noteListData, setActiveNote, activeNote, deleteNote, paramToSearch }) => {
 
   const renderEmpty = () => {
     return (
@@ -14,7 +14,9 @@ const NoteList = ({ noteListData, setActiveNote, activeNote, deleteNote }) => {
   }
 
   const renderNodeList = (noteListData) => {
-    const noteArray = firebaseObjectToArray(noteListData);
+    const noteArray = firebaseObjectToArray(noteListData).filter( note => 
+      note.title.toLowerCase().indexOf(paramToSearch.toLowerCase()) > -1
+    );
     if (noteArray.length === 0) return renderEmpty();
     return noteArray.map(note => {
       const { title, lastModified, id } = note;

@@ -15,7 +15,8 @@ export class App extends Component {
       user: null,
       activeNote: null,
       isLogginIn: false,
-      noteListData: {}
+      noteListData: {},
+      paramToSearch: ''
     }
   }
   componentDidMount() {
@@ -86,6 +87,11 @@ export class App extends Component {
     });    
   }
 
+  filterNotes = (e) => {
+    const param = e.target.value;
+    this.setState({ paramToSearch: param});
+  }
+
   deleteNote = (noteId) => {
     const userId = this.state.user.uid;
     database.ref(`/user/${userId}/${noteId}`).remove();
@@ -115,7 +121,7 @@ export class App extends Component {
   }
 
   render() {
-    const { isLogginIn, user, loadingDataFromServer, noteListData, activeNote } = this.state;
+    const { isLogginIn, user, loadingDataFromServer, noteListData, activeNote, paramToSearch } = this.state;
     const isLogIn = user !== null;
     if (loadingDataFromServer) {
       return <LoadingScreen />
@@ -129,7 +135,9 @@ export class App extends Component {
             <Main
               user={user}
               noteListData={noteListData}
+              paramToSearch={paramToSearch}
               addNewNote={this.addNewNote}
+              filterNotes={this.filterNotes}
               deleteNote={this.deleteNote}
               changeNote={this.changeNote}
               setActiveNote={this.setActiveNote}
