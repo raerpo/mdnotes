@@ -9,16 +9,15 @@ import { auth, database, githubAuthProvider } from './config/firebase';
 import { getNoteTitle } from './utils/notes';
 
 export class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      user: null,
-      activeNote: null,
-      isLogginIn: false,
-      noteListData: {},
-      paramToSearch: ''
-    }
+
+  state = {
+    user: null,
+    activeNote: null,
+    isLogginIn: false,
+    noteListData: {},
+    paramToSearch: ''
   }
+  
   componentDidMount() {
     // Show the loading screen
     this.setState({
