@@ -1,6 +1,9 @@
 ## MDNotes
 Simple application for note taking with real time sync and support for code editors.
 
+This is the live version:
+https://mdnotes.co/
+
 ### Firebase configuration
 
 This is firebase backend project so in order to use it locally you need to create a firebase web application and get your own credentials.
@@ -20,6 +23,10 @@ The project was made using create-react-app so we only have to do:
 ```
 npm start
 ```
+
+### TODO:
+
+- [] Once the web version is ready, we should start creating the code editor extensions
 
 ### License
 MIT
