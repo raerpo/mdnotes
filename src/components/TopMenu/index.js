@@ -8,7 +8,7 @@ const TopMenu = ({ user, onLogOutClick }) => {
     <div className="menu right">
       <div className="item">
         <img className="ui avatar image" src={user.photoURL} alt={user.displayName} />
-        <span>{ user.displayName }</span>
+        <span>{ user.displayName || user.email }</span>
       </div>
       <div className="item">
         <div className="ui button negative" onClick={onLogOutClick}>Log out</div>
