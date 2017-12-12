@@ -14,15 +14,13 @@ This is firebase backend project so in order to use it locally you need to creat
 
 ### Installation
 
-`npm run install`
+`npm install`
 
 ### Development
 
 The project was made using create-react-app so we only have to do:
 
-```
-npm start
-```
+`npm run start`
 
 ### TODO:
 
