@@ -13,11 +13,11 @@
     overflow: hidden;
     transform: skewY(3deg);
     transform-origin: 2;
-    background: #F7971E;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #FFD200, #F7971E);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #FFD200, #F7971E); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #F7971E;
+    background: linear-gradient(to bottom, #FFD200, #F7971E);
     position: relative;
-    top: -5rem;    
+    top: -5rem;
+    max-width: 100vw;
 }
 
 .main-wrapper_content {
