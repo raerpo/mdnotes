@@ -2,7 +2,7 @@
 Simple application for note taking with real time sync and support for code editors.
 
 This is the live version:
-https://mdnotes-b0ddf.firebaseapp.com/
+https://mdnotes.co/
 
 ### Firebase configuration
 
