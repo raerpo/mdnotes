@@ -1,8 +1,8 @@
 import React from 'react';
-import TopMenu from '../TopMenu';
-import NoteList from '../NoteList';
-import NoteActions from '../NoteActions';
-import CodeEditor from '../CodeEditor';
+import TopMenu from './components/TopMenu';
+import NoteList from './components/NoteList';
+import NoteActions from './components/NoteActions';
+import CodeEditor from './components/CodeEditor';
 
 const Main = ({ user, onLogOutClick, addNewNote, filterNotes, paramToSearch, deleteNote, noteListData, setActiveNote, activeNote, changeNote }) => {
   const getNoteContent = () => {
