@@ -1,7 +1,7 @@
 import React from 'react';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import cx from 'classnames';
-import { firebaseObjectToArray } from './utils/notes';
+import { firebaseObjectToArray } from 'utils/notes';
 
 const NoteList = ({ noteListData, setActiveNote, activeNote, deleteNote, paramToSearch }) => {
 

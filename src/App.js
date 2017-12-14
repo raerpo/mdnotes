@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import uuid from 'uuid';
-import Home from './components/Home';
-import Main from './components/Main';
+import Home from './scenes/Home';
+import Main from './scenes/Main';
 import LoadingScreen from './components/LoadingScreen';
 import * as routes from './constants/routes';
 import { auth, database, githubAuthProvider } from './config/firebase';
@@ -119,6 +119,17 @@ export class App extends Component {
     );
   }
 
+  onChangeTags = (ev) => {
+    const userId = this.state.user.uid;
+    const { activeNote } = this.state;
+    const tags = ev.target.value;
+    database.ref(`/user/${userId}/${activeNote}`).update(
+      {
+        '/tags': tags
+      }
+    );
+  }
+
   render() {
     const { isLogginIn, user, loadingDataFromServer, noteListData, activeNote, paramToSearch } = this.state;
     const isLogIn = user !== null;
@@ -142,6 +153,7 @@ export class App extends Component {
               setActiveNote={this.setActiveNote}
               onLogOutClick={this.onLogOutClick}
               activeNote={activeNote}
+              onChangeTags={this.onChangeTags}
             /> : <Redirect to={routes.HOME} />} />
       </div>
     </Router>)
