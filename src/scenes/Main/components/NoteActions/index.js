@@ -11,7 +11,6 @@ const Search = ({ addNewNote, filterNotes }) => {
       </div>
       <div className="note-actions">
         <div className="ui small basic icon buttons">
-          <button className="ui button" title="Download Notes"><i className="download icon"></i></button>
           <button className="ui button" title="New note" onClick={addNewNote}><i className="plus icon"></i></button>
         </div>
       </div>
