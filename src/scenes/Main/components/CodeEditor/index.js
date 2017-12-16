@@ -6,6 +6,8 @@ import 'codemirror/mode/markdown/markdown';
 
 const options = {
   lineNumbers: true,
+  lineWrapping: true,
+  indentUnit: 2,
   mode: 'markdown'
 };
 
