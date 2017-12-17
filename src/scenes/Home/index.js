@@ -15,11 +15,6 @@ const Home = ({ onlogInWithGithub, isLogginIn }) => {
       <div className="ui text main-wrapper_content">
         <div className="ui main-wrapper_menu">
           <img src="/MDnotes_logo-white.png" alt="" />
-          <div className="ui main-wrapper_menu_content">
-            <a href="/">Authors</a>
-            <a href="/">Explore</a>
-            <a href="/">Contact</a>
-          </div>
         </div>
 
         <div className="ui main-wrapper_info">
