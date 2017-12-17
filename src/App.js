@@ -108,8 +108,8 @@ export class App extends Component {
         activeNote: notesKeys.length > 0 ? notesKeys[0] : null
       });
     } else {
-      this.setState({
-        activeNote
+      this.setState({ activeNote }, () => {
+        this.checkIfNoteIsPublic(activeNote);
       });
     }
   };
@@ -132,13 +132,42 @@ export class App extends Component {
     });
   };
 
-  togglePublishNote = (activeNote, note) => {
+  checkIfNoteIsPublic = noteId => {
+    database
+      .ref(`/public/${noteId}`)
+      .once("value")
+      .then(snapshot => {
+        this.setState({
+          isPublic: snapshot.val() !== null
+        });
+      });
+  };
+
+  publishNote = (activeNote, note) => {
     const { title, content, lastModified } = note;
-    database.ref(`/public/${activeNote}`).set({
-      title,
-      content,
-      lastModified
-    });
+    database
+      .ref(`/public/${activeNote}`)
+      .set({
+        title,
+        content,
+        lastModified
+      })
+      .then(() => {
+        this.setState({
+          isPublic: true
+        });
+      });
+  };
+
+  unpublishNote = activeNote => {
+    database
+      .ref(`/public/${activeNote}`)
+      .remove()
+      .then(() => {
+        this.setState({
+          isPublic: false
+        });
+      });
   };
 
   render() {
@@ -148,7 +177,8 @@ export class App extends Component {
       loadingDataFromServer,
       noteListData,
       activeNote,
-      paramToSearch
+      paramToSearch,
+      isPublic
     } = this.state;
     const isLogIn = user !== null;
     if (loadingDataFromServer) {
@@ -187,7 +217,9 @@ export class App extends Component {
                   onLogOutClick={this.onLogOutClick}
                   activeNote={activeNote}
                   onChangeTags={this.onChangeTags}
-                  togglePublishNote={this.togglePublishNote}
+                  isPublic={isPublic}
+                  publishNote={this.publishNote}
+                  unpublishNote={this.unpublishNote}
                 />
               ) : (
                 <Redirect to={routes.HOME} />
@@ -195,7 +227,7 @@ export class App extends Component {
             }
           />
           <Route
-            path={`${routes.PUBLIC}/notes/:noteId`}
+            path={`${routes.PUBLIC}/:noteId`}
             render={routeProps => <Public {...routeProps} />}
           />
         </div>

@@ -17,7 +17,9 @@ const Main = ({
   activeNote,
   changeNote,
   onChangeTags,
-  togglePublishNote
+  publishNote,
+  unpublishNote,
+  isPublic
 }) => {
   const getNoteContent = () => {
     if (!noteListData) return null;
@@ -56,7 +58,9 @@ const Main = ({
             tags={getNoteTags()}
             activeNote={activeNote}
             note={getNote()}
-            togglePublishNote={togglePublishNote}
+            isPublic={isPublic}
+            publishNote={publishNote}
+            unpublishNote={unpublishNote}
           />
           <CodeEditor
             content={getNoteContent()}
