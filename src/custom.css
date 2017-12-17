@@ -6,7 +6,6 @@
 }
 .app > div {
   height: 100vh;
-  overflow: hidden;
 }
 .ui.list, .ui.menu {
   margin: 0px;
@@ -17,13 +16,13 @@
 .actions {
   padding: 1rem 0px 1rem 1rem;
   display: flex;
-  position: fixed;
-  width: 23%;
   box-sizing: content-box;
   height: 40px;
   background: white;
   margin-top: 1px;
   z-index: 1;
+  position: sticky;
+  top: 0px;
 }
 .search {
   width: 100%;
@@ -33,9 +32,6 @@
   height: calc(100vh - 2.85714286em);
   overflow-x: hidden;
   overflow-y: scroll;
-}
-.sidemenu .big.list{
-  margin-top: 69px;
 }
 .sidemenu .ui.celled.list > .item {
   padding: 1em .5em;
