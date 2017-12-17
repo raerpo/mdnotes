@@ -6,12 +6,16 @@
 }
 .app > div {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 .ui.list, .ui.menu {
   margin: 0px;
+  height: 4.5em;
 }
 .ui.grid.main {
   margin-top: 0px;
+  height: calc(100% - 4.5em);
 }
 .actions {
   padding: 1rem 0px 1rem 1rem;
@@ -32,6 +36,7 @@
   height: calc(100vh - 2.85714286em);
   overflow-x: hidden;
   overflow-y: scroll;
+  max-height: 100%;
 }
 .sidemenu .ui.celled.list > .item {
   padding: 1em .5em;
