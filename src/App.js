@@ -116,7 +116,8 @@ export class App extends Component {
     const userId = this.state.user.uid;
     database.ref(`/user/${userId}/${noteId}`).update({
       "/content": content,
-      "/title": getNoteTitle(content)
+      "/title": getNoteTitle(content),
+      "/lastModified": new Date().getTime()
     });
   };
 
