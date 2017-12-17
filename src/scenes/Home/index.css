@@ -83,8 +83,8 @@
 }
 
 .ui.basic.button.main-wrapper_content_github {
-    color: #f49c3f!important;
-    background: #fff !important;
+    color: #fff!important;
+    background: #000 !important;
     border: none;
     font-size: 1.125rem;
     padding: 1.5rem 2rem;
@@ -95,9 +95,13 @@
 .ui.basic.button.main-wrapper_content_github:hover,
 .ui.basic.button.main-wrapper_content_github:active,
 .ui.basic.button.main-wrapper_content_github:focus {
-    color: #f49c3f !important;
+    color: #fff!important;
     box-shadow: none;
-    background: #fff;
+    background: #000 !important;
+}
+
+.ui.basic.button.main-wrapper_content_github i {
+    font-size: 1.5rem;
 }
 
 .main-wrapper_img {
@@ -108,3 +112,35 @@
     align-items: center;
 }
 
+.main-wrapper_img img {
+    width: 100%;
+}
+
+@media only screen and (max-width: 40em) { 
+    .main-wrapper {
+        width: 70vh;
+    }
+    .main-wrapper_content {
+        margin: 1rem auto;
+        width: 90%;
+    }
+    .main-wrapper_info {
+        min-height: 70vh;
+        width: 100%;
+    }
+    .main-wrapper_info h2 {
+        font-size: 2.2rem;
+    }
+    .main-wrapper_info h3 {
+        font-size: 1.2rem;
+    }
+    .main-wrapper_img {
+        height: 100%;
+        width: 100%;
+    }
+    .ui.basic.button.main-wrapper_content_github {
+        font-size: 1.35rem;
+        margin-top: 2rem;
+        width: 100%;
+    }
+}
