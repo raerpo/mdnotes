@@ -4,7 +4,7 @@
  * @param  {} titleLimit
  * @param  {} defaultTitle
  */
-export const getNoteTitle = (content = '', titleLimit = 20, defaultTitle = 'Unnamed note') => {
+export const getNoteTitle = (content = '', titleLimit = 30, defaultTitle = 'Unnamed note') => {
   const trimmedContent = content.trim().split('\n')[0];
   const needsEllipsis = trimmedContent.length > titleLimit;
   return trimmedContent.length > 0 ? 
