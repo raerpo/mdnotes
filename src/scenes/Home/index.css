@@ -13,8 +13,9 @@
     overflow: hidden;
     transform: skewY(3deg);
     transform-origin: 2;
-    background: #F7971E;
-    background: linear-gradient(to bottom, #FFD200, #F7971E);
+    background: #f2994a; 
+    background: -webkit-linear-gradient(to bottom, #f2994a, #f2c94c); 
+    background: linear-gradient(to bottom, #f2994a, #f2c94c); 
     position: relative;
     top: -5rem;
     max-width: 100vw;
@@ -22,8 +23,10 @@
 
 .main-wrapper_content {
     color: #fff;
-    margin: 2rem 0;
+    margin: 2rem auto;
     position: absolute;
+    left: 0;
+    right: 0;
     top: 0;
     width: 80%;
     display: flex;
