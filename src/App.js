@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import uuid from "uuid";
 import Home from "./scenes/Home";
 import Main from "./scenes/Main";
+import Public from "./scenes/Public";
 import LoadingScreen from "./components/LoadingScreen";
 import * as routes from "./constants/routes";
 import { auth, database, githubAuthProvider } from "./config/firebase";
@@ -14,7 +15,8 @@ export class App extends Component {
     activeNote: null,
     isLogginIn: false,
     noteListData: {},
-    paramToSearch: ""
+    paramToSearch: "",
+    isPublic: false
   };
 
   componentDidMount() {
@@ -130,6 +132,15 @@ export class App extends Component {
     });
   };
 
+  togglePublishNote = (activeNote, note) => {
+    const { title, content, lastModified } = note;
+    database.ref(`/public/${activeNote}`).set({
+      title,
+      content,
+      lastModified
+    });
+  };
+
   render() {
     const {
       isLogginIn,
@@ -176,11 +187,16 @@ export class App extends Component {
                   onLogOutClick={this.onLogOutClick}
                   activeNote={activeNote}
                   onChangeTags={this.onChangeTags}
+                  togglePublishNote={this.togglePublishNote}
                 />
               ) : (
                 <Redirect to={routes.HOME} />
               )
             }
+          />
+          <Route
+            path={`${routes.PUBLIC}/notes/:noteId`}
+            render={routeProps => <Public {...routeProps} />}
           />
         </div>
       </Router>

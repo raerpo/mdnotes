@@ -1,7 +1,7 @@
 .fullscreen, #root, .app {
   height: 100vh;
 }
-.logo > img {
+.logo img {
   width: 160px;
 }
 .app > div {

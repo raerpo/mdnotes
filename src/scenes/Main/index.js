@@ -1,5 +1,5 @@
 import React from "react";
-import TopMenu from "./components/TopMenu";
+import TopMenu from "components/TopMenu";
 import NoteList from "./components/NoteList";
 import NoteActions from "./components/NoteActions";
 import CodeEditor from "./components/CodeEditor";
@@ -16,12 +16,18 @@ const Main = ({
   setActiveNote,
   activeNote,
   changeNote,
-  onChangeTags
+  onChangeTags,
+  togglePublishNote
 }) => {
   const getNoteContent = () => {
     if (!noteListData) return null;
     const noteData = noteListData[activeNote];
     return noteData.content;
+  };
+  const getNote = () => {
+    if (!noteListData) return null;
+    const noteData = noteListData[activeNote];
+    return noteData;
   };
   const getNoteTags = () => {
     if (!noteListData) return "";
@@ -45,7 +51,13 @@ const Main = ({
           />
         </div>
         <div className="ui column twelve wide">
-          <Toolbar onChangeTags={onChangeTags} tags={getNoteTags()} />
+          <Toolbar
+            onChangeTags={onChangeTags}
+            tags={getNoteTags()}
+            activeNote={activeNote}
+            note={getNote()}
+            togglePublishNote={togglePublishNote}
+          />
           <CodeEditor
             content={getNoteContent()}
             changeNote={changeNote}

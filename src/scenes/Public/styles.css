@@ -1,0 +1,11 @@
+.app > .public-wrapper {
+  height: auto;
+}
+.rendered-content {
+  margin: 5em auto;
+  color: rgb(92, 89, 89);
+  max-width: 70%;
+}
+.rendered-content.no-content {
+  text-align: center;
+}

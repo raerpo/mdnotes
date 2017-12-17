@@ -12,6 +12,7 @@
     "date-fns": "^1.29.0",
     "firebase": "^4.7.0",
     "lodash": "^4.17.4",
+    "marked": "^0.3.7",
     "react": "^16.2.0",
     "react-codemirror2": "^3.0.7",
     "react-dom": "^16.2.0",
