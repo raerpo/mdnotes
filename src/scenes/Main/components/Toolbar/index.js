@@ -22,7 +22,7 @@ const Toolbar = ({
     evt.target.select();
   };
   const renderPublishActions = () => {
-    return isPublic ? (
+    return isPublic && activeNote ? (
       <div
         className={cx("ui right labeled left icon input", {
           disabled: !activeNote
