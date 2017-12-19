@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Controlled as CodeMirror } from 'react-codemirror2';
+import uuid from 'uuid';
 
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/mode/markdown/markdown';
@@ -32,7 +33,10 @@ class CodeEditor extends Component {
   }
   handleChange = (e) => {
     const { changeNote, activeNote } = this.props;
-    changeNote(this.state.content, activeNote);
+    // When the note list is empty and the user start typing a new
+    // note, activeNote is going to be null. We create a new noteId
+    // to create a new note from here
+    changeNote(this.state.content, activeNote ? activeNote : uuid.v4());
   }
   render() {
     return (

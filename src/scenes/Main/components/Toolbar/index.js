@@ -1,5 +1,6 @@
 import React from "react";
 import { PUBLIC } from "constants/routes";
+import cx from "classnames";
 import "./styles.css";
 
 const Toolbar = ({
@@ -16,21 +17,32 @@ const Toolbar = ({
   };
   const handleUnpublishNote = () => {
     unpublishNote(activeNote);
-  }
-  const handleFocus = (evt) => {
+  };
+  const handleFocus = evt => {
     evt.target.select();
-  }
+  };
   const renderPublishActions = () => {
     return isPublic ? (
-      <div className="ui right labeled left icon input">
+      <div
+        className={cx("ui right labeled left icon input", {
+          disabled: !activeNote
+        })}
+      >
         <i className="upload icon" />
-        <input type="text" value={`${window.location.origin}${PUBLIC}/${activeNote}`} readOnly onClick={handleFocus} />
-        <a className="ui tag label" onClick={handleUnpublishNote}>Unpublish</a>
+        <input
+          type="text"
+          value={`${window.location.origin}${PUBLIC}/${activeNote}`}
+          readOnly
+          onClick={handleFocus}
+        />
+        <a className="ui tag label" onClick={handleUnpublishNote}>
+          Unpublish
+        </a>
       </div>
     ) : (
       <div className="ui small basic icon buttons">
         <button
-          className="ui labeled icon button"
+          className={cx("ui labeled icon button", { disabled: !activeNote })}
           onClick={handlePublishNote}
         >
           <i className="upload icon" />
@@ -41,7 +53,11 @@ const Toolbar = ({
   };
   return (
     <div className="ui toolbar">
-      <div className="ui right left icon input fluid">
+      <div
+        className={cx("ui right left icon input fluid", {
+          disabled: !activeNote
+        })}
+      >
         <i className="tags icon" />
         <input
           placeholder="Enter tags separated by commas"
