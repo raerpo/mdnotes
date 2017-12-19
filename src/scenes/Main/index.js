@@ -43,7 +43,11 @@ const Main = ({
       <TopMenu user={user} onLogOutClick={onLogOutClick} />
       <div className="ui grid main">
         <div className="ui column four wide sidemenu">
-          <NoteActions addNewNote={addNewNote} filterNotes={filterNotes} />
+          <NoteActions
+            addNewNote={addNewNote}
+            filterNotes={filterNotes}
+            paramToSearch={paramToSearch}
+          />
           <NoteList
             noteListData={noteListData}
             setActiveNote={setActiveNote}

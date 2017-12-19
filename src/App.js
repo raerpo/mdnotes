@@ -84,6 +84,8 @@ export class App extends Component {
   addNewNote = () => {
     const userId = this.state.user.uid;
     const noteId = uuid.v4();
+    // Clear search term when adding a new note
+    this.clearParamToSearch();
     database.ref(`/user/${userId}/${noteId}`).set({
       title: getNoteTitle(),
       content: "",
@@ -169,6 +171,12 @@ export class App extends Component {
         });
       });
   };
+
+  clearParamToSearch = () => {
+    this.setState({
+      paramToSearch: ''
+    });
+  }
 
   render() {
     const {
