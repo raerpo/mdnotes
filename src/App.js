@@ -101,6 +101,7 @@ export class App extends Component {
   deleteNote = noteId => {
     const userId = this.state.user.uid;
     database.ref(`/user/${userId}/${noteId}`).remove();
+    database.ref(`/public/${noteId}`).remove();
   };
 
   setActiveNote = activeNote => {
