@@ -38,6 +38,13 @@ const Toolbar = ({
         <a className="ui tag label" onClick={handleUnpublishNote}>
           Unpublish
         </a>
+        <button
+          class="ui icon button refresh"
+          title="refresh published note"
+          onClick={handlePublishNote}
+        >
+          <i class="refresh icon" />
+        </button>
       </div>
     ) : (
       <div className="ui small basic icon buttons">
