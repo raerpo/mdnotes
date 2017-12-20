@@ -39,11 +39,11 @@ const Toolbar = ({
           Unpublish
         </a>
         <button
-          class="ui icon button refresh"
+          className="ui icon button refresh"
           title="refresh published note"
           onClick={handlePublishNote}
         >
-          <i class="refresh icon" />
+          <i className="refresh icon" />
         </button>
       </div>
     ) : (

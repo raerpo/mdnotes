@@ -38,6 +38,13 @@ export class App extends Component {
     });
   }
 
+  componentDidUpdate() {
+    if (!this.state.activeNote) return false;
+    const { activeNote, noteListData } = this.state;
+    const activeNoteTitle = noteListData[activeNote] ? noteListData[activeNote].title : '';
+    document.title = `MDNotes - ${activeNoteTitle}`;
+  }
+
   onLogInWithGithub = () => {
     this.setState(
       {
