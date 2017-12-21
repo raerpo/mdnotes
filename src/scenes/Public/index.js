@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import TopMenu from "components/TopMenu";
 import { database } from "config/firebase";
 import marked from "marked";
-import LoadingScreen from 'components/LoadingScreen';
-import { Link } from 'react-router-dom';
-import * as routes from 'constants/routes';
+import LoadingScreen from "components/LoadingScreen";
+import { Link } from "react-router-dom";
+import * as routes from "constants/routes";
 
-import './styles.css';
+import "./styles.css";
 
 export class Public extends Component {
   state = { note: null, isLoading: true };
@@ -19,6 +19,8 @@ export class Public extends Component {
         this.setState({
           note: snapshot.val(),
           isLoading: false
+        }, () => {
+          document.title = `MDNotes - ${this.state.note.title}`;
         });
       });
   }
@@ -32,14 +34,19 @@ export class Public extends Component {
       <div className="public-wrapper">
         <TopMenu />
         <div className="ui grid main">
-        {note ? (
-          <div className="rendered-content" dangerouslySetInnerHTML={this.getHTMLNoteContent(note)}></div>
-        ) : (
-          <div className="rendered-content no-content">
-            <h1>This note doesn't exist</h1>
-            <Link to={routes.HOME}>You can create your own notes in here</Link>
-          </div>
-        )}
+          {note ? (
+            <div
+              className="rendered-content"
+              dangerouslySetInnerHTML={this.getHTMLNoteContent(note)}
+            />
+          ) : (
+            <div className="rendered-content no-content">
+              <h1>This note doesn't exist</h1>
+              <Link to={routes.HOME}>
+                You can create your own notes in here
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     );
