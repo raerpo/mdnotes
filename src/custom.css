@@ -59,3 +59,7 @@ button.delete-note {
   height: 94vh;
   width: 100%;
 }
+.react-codemirror2{
+  height: calc(100vh - 9.2em);
+  overflow: hidden;
+}
