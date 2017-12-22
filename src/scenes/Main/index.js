@@ -1,9 +1,9 @@
-import React from "react";
-import TopMenu from "components/TopMenu";
-import NoteList from "./components/NoteList";
-import NoteActions from "./components/NoteActions";
-import CodeEditor from "./components/CodeEditor";
-import Toolbar from "./components/Toolbar";
+import React from 'react';
+import TopMenu from 'components/TopMenu';
+import NoteList from './components/NoteList';
+import NoteActions from './components/NoteActions';
+import CodeEditor from './components/CodeEditor';
+import Toolbar from './components/Toolbar';
 
 const Main = ({
   user,
@@ -19,7 +19,7 @@ const Main = ({
   onChangeTags,
   publishNote,
   unpublishNote,
-  isPublic
+  isPublic,
 }) => {
   const getNoteContent = () => {
     if (!noteListData) return null;
@@ -32,7 +32,7 @@ const Main = ({
     return noteData;
   };
   const getNoteTags = () => {
-    if (!noteListData) return "";
+    if (!noteListData) return '';
     const noteData = noteListData[activeNote];
     return noteData.tags;
   };

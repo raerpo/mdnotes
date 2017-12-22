@@ -1,12 +1,12 @@
-import React from "react";
-import cx from "classnames";
+import React from 'react';
+import cx from 'classnames';
 
-import "./index.css";
+import './index.css';
 
 const Home = ({ onlogInWithGithub, isLogginIn }) => {
   const buttonClassNames = cx(
-    "ui basic button massive main-wrapper_content_github",
-    { loading: isLogginIn }
+    'ui basic button massive main-wrapper_content_github',
+    { loading: isLogginIn },
   );
   return (
     <div className="ui main-wrapper">

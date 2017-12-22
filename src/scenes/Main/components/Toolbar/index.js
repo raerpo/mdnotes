@@ -1,16 +1,16 @@
-import React from "react";
-import { PUBLIC } from "constants/routes";
-import cx from "classnames";
-import "./styles.css";
+import React from 'react';
+import { PUBLIC } from 'constants/routes';
+import cx from 'classnames';
+import './styles.css';
 
 const Toolbar = ({
   onChangeTags,
-  tags = "",
+  tags = '',
   publishNote,
   unpublishNote,
   activeNote,
   note,
-  isPublic
+  isPublic,
 }) => {
   const handlePublishNote = () => {
     publishNote(activeNote, note);
@@ -18,51 +18,49 @@ const Toolbar = ({
   const handleUnpublishNote = () => {
     unpublishNote(activeNote);
   };
-  const handleFocus = evt => {
+  const handleFocus = (evt) => {
     evt.target.select();
   };
-  const renderPublishActions = () => {
-    return isPublic && activeNote ? (
-      <div
-        className={cx("ui right labeled left icon input", {
-          disabled: !activeNote
+  const renderPublishActions = () => (isPublic && activeNote ? (
+    <div
+      className={cx('ui right labeled left icon input', {
+          disabled: !activeNote,
         })}
+    >
+      <i className="upload icon" />
+      <input
+        type="text"
+        value={`${window.location.origin}${PUBLIC}/${activeNote}`}
+        readOnly
+        onClick={handleFocus}
+      />
+      <a className="ui tag label" onClick={handleUnpublishNote}>
+          Unpublish
+      </a>
+      <button
+        className="ui icon button refresh"
+        title="refresh published note"
+        onClick={handlePublishNote}
+      >
+        <i className="refresh icon" />
+      </button>
+    </div>
+  ) : (
+    <div className="ui small basic icon buttons">
+      <button
+        className={cx('ui labeled icon button', { disabled: !activeNote })}
+        onClick={handlePublishNote}
       >
         <i className="upload icon" />
-        <input
-          type="text"
-          value={`${window.location.origin}${PUBLIC}/${activeNote}`}
-          readOnly
-          onClick={handleFocus}
-        />
-        <a className="ui tag label" onClick={handleUnpublishNote}>
-          Unpublish
-        </a>
-        <button
-          className="ui icon button refresh"
-          title="refresh published note"
-          onClick={handlePublishNote}
-        >
-          <i className="refresh icon" />
-        </button>
-      </div>
-    ) : (
-      <div className="ui small basic icon buttons">
-        <button
-          className={cx("ui labeled icon button", { disabled: !activeNote })}
-          onClick={handlePublishNote}
-        >
-          <i className="upload icon" />
           Publish
-        </button>
-      </div>
-    );
-  };
+      </button>
+    </div>
+  ));
   return (
     <div className="ui toolbar">
       <div
-        className={cx("ui right left icon input fluid", {
-          disabled: !activeNote
+        className={cx('ui right left icon input fluid', {
+          disabled: !activeNote,
         })}
       >
         <i className="tags icon" />

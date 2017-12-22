@@ -7,12 +7,12 @@
 export const getNoteTitle = (content = '', titleLimit = 30, defaultTitle = 'Unnamed note') => {
   const trimmedContent = content.trim().split('\n')[0];
   const needsEllipsis = trimmedContent.length > titleLimit;
-  return trimmedContent.length > 0 ? 
-    `${trimmedContent.substring(0, titleLimit)}${needsEllipsis ? '...' : ''}` : 
+  return trimmedContent.length > 0 ?
+    `${trimmedContent.substring(0, titleLimit)}${needsEllipsis ? '...' : ''}` :
     defaultTitle;
-}
+};
 /**
- * @description Firebase sends note as 
+ * @description Firebase sends note as
  *  {noteId: {content: String, timestamp: Number}, noteId: {content: String, timestamp: Number}}
  *  The idea is to get an array that is easier to iterate
  *  [{id: noteId, timestamp: Number, content: String}, {id: noteId, timestamp: Number, content: String}, {id: noteId, timestamp: Number, content: String}]
@@ -22,10 +22,8 @@ export const firebaseObjectToArray = (noteListData) => {
   if (!noteListData) return [];
   const keys = Object.keys(noteListData);
   if (keys.length === 0) return [];
-  return keys.map(key => {
-    return {
-      id: key,
-      ...noteListData[key]
-    }
-  }).sort((a, b) => b.lastModified - a.lastModified)
-}
+  return keys.map(key => ({
+    id: key,
+    ...noteListData[key],
+  })).sort((a, b) => b.lastModified - a.lastModified);
+};

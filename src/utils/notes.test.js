@@ -31,8 +31,18 @@ describe('getNoteTitle', () => {
 
 describe('firebaseObjectToArray', () => {
   it('transform firebase object to array', () => {
-    const firebaseObject = { 'noteId1': { content: "", lastModified: 10, title: "Unnamed note" }, 'noteId2': { content: "", lastModified: 5, title: "Unnamed note" }, 'noteId3': { content: "", lastModified: 20, title: "Unnamed note" }, 'noteId4': { content: "", lastModified: 2, title: "Unnamed note" } };
-    const mdNoteArray = [{id: 'noteId3', content: "", lastModified: 20, title: "Unnamed note"}, {id: 'noteId1', content: "", lastModified: 10, title: "Unnamed note"}, {id: 'noteId2', content: "", lastModified: 5, title: "Unnamed note" }, {id: 'noteId4', content: "", lastModified: 2, title: "Unnamed note"}];
+    const firebaseObject = {
+      noteId1: { content: '', lastModified: 10, title: 'Unnamed note' }, noteId2: { content: '', lastModified: 5, title: 'Unnamed note' }, noteId3: { content: '', lastModified: 20, title: 'Unnamed note' }, noteId4: { content: '', lastModified: 2, title: 'Unnamed note' },
+    };
+    const mdNoteArray = [{
+      id: 'noteId3', content: '', lastModified: 20, title: 'Unnamed note',
+    }, {
+      id: 'noteId1', content: '', lastModified: 10, title: 'Unnamed note',
+    }, {
+      id: 'noteId2', content: '', lastModified: 5, title: 'Unnamed note',
+    }, {
+      id: 'noteId4', content: '', lastModified: 2, title: 'Unnamed note',
+    }];
     expect(firebaseObjectToArray(firebaseObject)).toEqual(mdNoteArray);
   });
   it('return empty array when the firebase data is null', () => {

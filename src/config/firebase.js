@@ -7,7 +7,7 @@ const config = {
   databaseURL: firebaseKeys.databaseURL,
   projectId: firebaseKeys.projectId,
   storageBucket: firebaseKeys.storageBucket,
-  messagingSenderId: firebaseKeys.messagingSenderId
+  messagingSenderId: firebaseKeys.messagingSenderId,
 };
 
 firebase.initializeApp(config);

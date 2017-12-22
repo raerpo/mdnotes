@@ -1,37 +1,31 @@
-import React from "react";
-import distanceInWordsToNow from "date-fns/distance_in_words_to_now";
-import cx from "classnames";
-import { firebaseObjectToArray } from "utils/notes";
+import React from 'react';
+import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
+import cx from 'classnames';
+import { firebaseObjectToArray } from 'utils/notes';
 
 const NoteList = ({
   noteListData,
   setActiveNote,
   activeNote,
   deleteNote,
-  paramToSearch
+  paramToSearch,
 }) => {
-  const renderEmpty = () => {
-    return (
-      <div className="item">
-        <p>Nothing to show here. Click on the add button to add a new note</p>
-      </div>
-    );
-  };
+  const renderEmpty = () => (
+    <div className="item">
+      <p>Nothing to show here. Click on the add button to add a new note</p>
+    </div>
+  );
 
-  const filterNoteListBySearch = noteListData => {
-    return firebaseObjectToArray(noteListData).filter(
-      note => {
-        const searchInTitle = note.title.toLowerCase().indexOf(paramToSearch.toLowerCase()) > -1;
-        const searchInTags = note.tags ? note.tags.toLowerCase().indexOf(paramToSearch.toLowerCase()) > -1 : false;
-        return searchInTitle || searchInTags;
-      }
-    );
-  };
+  const filterNoteListBySearch = noteListData => firebaseObjectToArray(noteListData).filter((note) => {
+    const searchInTitle = note.title.toLowerCase().indexOf(paramToSearch.toLowerCase()) > -1;
+    const searchInTags = note.tags ? note.tags.toLowerCase().indexOf(paramToSearch.toLowerCase()) > -1 : false;
+    return searchInTitle || searchInTags;
+  });
 
-  const renderNodeList = noteListData => {
+  const renderNodeList = (noteListData) => {
     const noteArray = filterNoteListBySearch(noteListData);
     if (noteArray.length === 0) return renderEmpty();
-    return noteArray.map(note => {
+    return noteArray.map((note) => {
       const { title, lastModified, id } = note;
       const lastModifiedFormated = distanceInWordsToNow(new Date(lastModified));
       const handleSelectNote = () => {
@@ -40,7 +34,7 @@ const NoteList = ({
       const handleDeleteNote = () => {
         deleteNote(id);
       };
-      const noteClasses = cx("item", { active: id === activeNote });
+      const noteClasses = cx('item', { active: id === activeNote });
       return (
         <div className={noteClasses} key={id}>
           <button
