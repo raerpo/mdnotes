@@ -42,6 +42,7 @@ export class App extends Component {
     if (!this.state.activeNote) return false;
     const { activeNote, noteListData } = this.state;
     const activeNoteTitle = noteListData[activeNote] ? noteListData[activeNote].title : '';
+    this.checkIfNoteIsPublic(activeNote);
     document.title = `MDNotes - ${activeNoteTitle}`;
   }
 
@@ -111,6 +112,7 @@ export class App extends Component {
     database.ref(`/public/${noteId}`).remove();
   };
 
+  // This method runs when the user clicks on a note
   setActiveNote = activeNote => {
     if (!activeNote) {
       const notesKeys = this.state.noteListData;
