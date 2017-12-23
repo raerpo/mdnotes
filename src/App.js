@@ -51,7 +51,7 @@ export class App extends Component {
         isLogginIn: true
       },
       () => {
-        auth.signInWithPopup(githubAuthProvider).then(() => {
+        auth.signInWithRedirect(githubAuthProvider).then(() => {
           this.setState({
             isLogginIn: false
           });
