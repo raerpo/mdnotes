@@ -31,19 +31,20 @@ const NoteList = ({
       const handleSelectNote = () => {
         setActiveNote(id);
       };
-      const handleDeleteNote = () => {
+      const handleDeleteNote = (e) => {
+        e.stopPropagation();
         deleteNote(id);
       };
       const noteClasses = cx('item', { active: id === activeNote });
       return (
-        <div className={noteClasses} key={id}>
+        <div className={noteClasses} key={id} onClick={handleSelectNote}>
           <button
             className="ui mini red right floated button delete-note"
             onClick={handleDeleteNote}
           >
             Delete
           </button>
-          <div className="content" onClick={handleSelectNote}>
+          <div className="content">
             <a className="header">{title}</a>
             <small className="description">
               Last modification: {lastModifiedFormated}
