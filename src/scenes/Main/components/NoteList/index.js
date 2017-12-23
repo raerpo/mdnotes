@@ -16,14 +16,14 @@ const NoteList = ({
     </div>
   );
 
-  const filterNoteListBySearch = noteListData => firebaseObjectToArray(noteListData).filter((note) => {
+  const filterNoteListBySearch = notesData => firebaseObjectToArray(notesData).filter((note) => {
     const searchInTitle = note.title.toLowerCase().indexOf(paramToSearch.toLowerCase()) > -1;
     const searchInTags = note.tags ? note.tags.toLowerCase().indexOf(paramToSearch.toLowerCase()) > -1 : false;
     return searchInTitle || searchInTags;
   });
 
-  const renderNodeList = (noteListData) => {
-    const noteArray = filterNoteListBySearch(noteListData);
+  const renderNodeList = (notesData) => {
+    const noteArray = filterNoteListBySearch(notesData);
     if (noteArray.length === 0) return renderEmpty();
     return noteArray.map((note) => {
       const { title, lastModified, id } = note;

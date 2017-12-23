@@ -36,7 +36,7 @@ class CodeEditor extends Component {
     // When the note list is empty and the user start typing a new
     // note, activeNote is going to be null. We create a new noteId
     // to create a new note from here
-    changeNote(this.state.content, activeNote ? activeNote : uuid.v4());
+    changeNote(this.state.content, activeNote || uuid.v4());
   }
   render() {
     return (

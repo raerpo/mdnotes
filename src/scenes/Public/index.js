@@ -24,9 +24,7 @@ export class Public extends Component {
         });
       });
   }
-  getHTMLNoteContent = note => {
-    return { __html: marked(note.content) };
-  };
+  getHTMLNoteContent = note => ({ __html: marked(note.content) });
   render() {
     const { note, isLoading } = this.state;
     if (isLoading) return <LoadingScreen />;
