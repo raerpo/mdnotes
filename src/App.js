@@ -42,7 +42,6 @@ export class App extends Component {
     if (!this.state.activeNote) return false;
     const { activeNote, noteListData } = this.state;
     const activeNoteTitle = noteListData[activeNote] ? noteListData[activeNote].title : '';
-    this.checkIfNoteIsPublic(activeNote);
     document.title = `MDNotes - ${activeNoteTitle}`;
   }
 
