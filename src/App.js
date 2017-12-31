@@ -97,6 +97,8 @@ export class App extends Component {
       title: getNoteTitle(),
       content: "",
       lastModified: new Date().getTime()
+    }).then(() => {
+      this.setActiveNote(noteId);
     });
   };
 
