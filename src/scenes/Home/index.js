@@ -30,7 +30,7 @@ const Home = ({ onlogInWithGithub, isLogginIn }) => {
         </div>
 
         <div className="ui main-wrapper_img">
-          <img src="/500x500.png" alt="Temporal home" />
+          <img src="/MDnotes_illustration.png" alt="Temporal home" />
         </div>
       </div>
     </div>

@@ -28,7 +28,7 @@
     left: 0;
     right: 0;
     top: 0;
-    width: 80%;
+    width: 90%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -47,7 +47,7 @@
 }
 
 .main-wrapper_menu_content {
-    width: 85%;
+    width: 90%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -66,7 +66,7 @@
 
 .main-wrapper_info {
     min-height: 80vh;
-    width: 50%;
+    width: 48%;
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -106,10 +106,13 @@
 
 .main-wrapper_img {
     height: 100%;
-    width: 50%;
+    width: 52%;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 .main-wrapper_img img {
