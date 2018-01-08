@@ -8,15 +8,15 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
-    "codemirror": "^5.32.0",
+    "codemirror": "^5.33.0",
     "date-fns": "^1.29.0",
-    "firebase": "^4.7.0",
+    "firebase": "^4.8.1",
     "lodash": "^4.17.4",
-    "marked": "^0.3.7",
+    "marked": "^0.3.9",
     "react": "^16.2.0",
     "react-codemirror2": "^3.0.7",
     "react-dom": "^16.2.0",
-    "react-markdown": "^3.1.0",
+    "react-markdown": "^3.1.4",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
     "semantic-ui-css": "^2.2.12",
@@ -31,7 +31,7 @@
     "lint": "eslint ./src --fix"
   },
   "devDependencies": {
-    "eslint": "^4.13.1",
+    "eslint": "^4.15.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.8.0",
